@@ -1,0 +1,26 @@
+{# watching.html.twig
+
+	This is for when the user is watching a show it will display either two 
+	messages. One for when the user has not watched the episode or if they have.
+	
+	-Sean McQueeney
+	-CSC 436
+	-streamTV Project
+#}
+
+{% include 'header.twig' %}
+<style>
+table, tr, th, td { border: 1px solid black !important; }
+	td, th {padding: .4em;}
+</style>
+
+{% if result != '' %}
+<h1> Enjoy Watching Episode {{info[0].etitle}} of {{info[0].stitle}}</h1>
+{% endif %}
+
+{% if result == '' %}
+<h2> Cannot watch Episode {{info[0].etitle}} of {{info[0].stitle}}</h2>
+<h3> Your account has already watched this episode today.</h3>
+{% endif %}
+
+{% include 'footer.twig' %}

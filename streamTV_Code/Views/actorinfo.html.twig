@@ -1,0 +1,56 @@
+{# actorinfo.html.twig
+
+	This file provides the template for displaying a details for a specific actor
+	in the database.  It sets up the table style, and then builds the html code
+	for the table of information about the actor.
+	
+	-Sean McQueeney
+	-CSC 436
+	-streamTV Project
+#}
+
+{% include 'header.twig' %}
+<style>
+table, tr, th, td { border: 1px solid black !important; }
+	td, th {padding: .4em;}
+	.title { text-align: center; }
+	.role { text-align: center; }
+</style>
+{% if main_cast %}
+	<h1>Details for {{main_cast[0].fname}} {{main_cast[0].lname}}</h1>
+
+	<table>
+	<h2>Main Cast Roles for {{main_cast[0].fname}} {{main_cast[0].lname}}</h2>
+		<tr>
+		<th class="title">Show</th>
+		<th class="role">Role</th>	
+		</tr>
+		{% for roles in main_cast %}
+		</tr>
+		<!--link to show information page-->
+		<td class="title"><a href="/streamTV/shows/{{main_cast[0].showid}} ">{{main_cast[0].title}}</a></td>
+		<td class="role">{{main_cast[0].role}}</a></td>
+		</tr>
+		{% endfor %}
+
+	</table>
+{% endif %}
+{% if recurring_cast %}
+	
+	<table>
+	<h3>Recurring Cast Roles for {{recurring_cast[0].fname}} {{recurring_cast[0].lname}}</h3>
+		<tr>
+		<th class="title">Show</th>
+		<th class="role">Role</th>	
+		</tr>
+		{% for roles in recurring_cast %}
+		</tr>
+		<!--link to show information page-->
+		<td class="title"><a href="/streamTV/shows/{{recurring_cast[0].showid}} ">{{recurring_cast[0].title}}</a></td>
+		<td class="role">{{recurring_cast[0].role}}</a></td>
+		</tr>
+		{% endfor %}
+
+{% endif %}
+
+{% include 'footer.twig' %}

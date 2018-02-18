@@ -1,0 +1,35 @@
+{# watched.html.twig
+
+	This file provides the template for displaying watched shows 
+	that only a user can see after logging into their account. It builds
+	a table around the shows that have been watched by the user.
+	
+	-Sean McQueeney
+	-CSC 436
+	-streamTV Project
+	
+#}
+
+{% include 'header.twig' %}
+<style>
+table, tr, th, td { border: 1px solid black !important; }
+	td, th {padding: .4em;}
+</style>
+
+{% if result %}
+<h1> Episodes of {{result[0].stitle}} watched by {{result[0].fname}} {{result[0].lname}}</h1>
+
+	<table>
+	<tr>
+	<th class="title">Title</th>
+	<th class="date">Date Watched</th>
+	</tr>
+	
+	{% for i in result %}
+	<tr>
+	<td class="title"><a href="/streamTV/episodeinfo/{{i.showid}}&{{i.episodeID}}">{{i.etitle}}</a></td>
+	<td class="date">{{i.datewatched}}</td>
+	</tr>
+	{% endfor %}
+{% endif %}
+{% include 'footer.twig' %}
